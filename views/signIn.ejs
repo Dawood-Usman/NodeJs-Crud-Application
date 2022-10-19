@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/signIn.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="/js/signIn.js" defer></script>
+    <title>About Page</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1 class="logo">CENFLIX</h1>
+                <ul class="nav-items">
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="/signIn">LOGIN</a></li>
+                    <li><a href="/signUp">SIGN UP</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+<div class="container">
+    <div class="login-form">
+        <h1> LOGIN </h1>
+        <form action = "/signIn" name="Login-Form" method="POST" onsubmit="return validateForm()">
+            <input type="text" name = "Name" id = "Username" placeholder="Username"><br>
+            <Span id="UN-error-box"></Span><br>
+            <input type="password" name = "Password" id = "Pass" placeholder="Password"><br>
+            <Span id="Pass-error-box"></Span><br>
+            <input type="submit" value="Login"><br>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/manageMovies.css">
+    <title>Sign Up</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1 class="logo">CENFLIX</h1>
+                <ul class="nav-items">
+                    <li><a href="/viewMovies">VIEW MOVIES</a></li>
+                    <li><a href="/addMovies">ADD MOVIES </a></li>
+                    <li><a href="/">LOG OUT</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="signup-form">
+            <h1 class="form-heading" style="text-align: center;">Add Movie</h1>
+            <p style="text-align: center;">Please Fill This Form To Add New Movie!</p>
+            <form action="/addMovies" name="su-form" method="POST" enctype="multipart/form-data">
+
+                <b>Movie Name</b><br>
+                <input type="text" name="movieName" placeholder="Movie Name" class="i-box"><br>
+                <b>Movie Duration</b><br>
+                <input type="text" name="movieDuration" placeholder="2hr 30m" class="i-box"><br>
+
+                <label for="PG"><b>Parental Guidance</b></label><br>
+                <select name="parentalGuidance" id="PG">
+                    <option value="13">13+</option>
+                    <option value="14">14+</option>
+                    <option value="15">15+</option>
+                    <option value="16">16+</option>
+                    <option value="17">17+</option>
+                    <option value="18">18+</option>
+                </select><br>
+
+                <label for="MT"><b>Movie Type</b></label><br>
+                <select name="movieType" id="MT">
+                    <option value="Action">Action</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Fantasy">Fantasy</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Mystery">Mystery</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Thriller">Thriller</option>
+                </select><br>
+                <b>Movie Description</b><br>
+                <textarea name="movieDescription" id="movieDescription" cols="45" rows="1"
+                    placeholder="Add Movie Description..."></textarea><br>
+                    <b>Movie Poster </b> <br>
+                    <input type="file" name="moviePoster"><br>
+                <input type="submit" value="Add Movie">
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/signUp.css">
+    <script src="/js/signUp.js" defer></script>
+    <title>Sign Up</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1 class="logo">CENFLIX</h1>
+                <ul class="nav-items">
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="/signIn">LOGIN</a></li>
+                    <li><a href="/signUp">SIGN UP</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="signup-form">
+            <h1 class="form-heading">Sign Up</h1>
+            <p>Please Fill This Form To Create Your Account!</p>
+            <hr style="border: 0.1px solid black;">
+            <form action="/signUp" name="su-form" method="POST" onsubmit="return formValidation()">
+                <input type="text" name="FName" placeholder="First Name">
+                <input type="text" name="LName" placeholder="Last Name"><br>
+                <input type="text" name="Username" placeholder="User_Name" class="i-box"><br>
+                <input type="email" name="Email" placeholder="Email" class="i-box"><br>
+                <input type="text" name="cnic" placeholder="Cnic" class="i-box"><br>
+                <input type="password" name="Password" id="1" placeholder="Password" class="i-box"><br>
+                <input type="password" name="CPassword" id="2" placeholder="Confirm Password" class="i-box"><br>
+                <input type="submit" value="SignUp">
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

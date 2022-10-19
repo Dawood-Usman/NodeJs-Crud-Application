@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/viewMovies.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1 class="logo">CENFLIX</h1>
+                <ul class="nav-items">
+                    <li><a href="/viewMovies">VIEW MOVIES</a></li>
+                    <li><a href="/addMovies">ADD MOVIES </a></li>
+                    <li><a href="/">LOG OUT</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <% moviesData.forEach(function(movie){ %>
+    <div class="wrapper">
+        <div class="main_card">
+            <div class="card_left">
+                <div class="card_datails">
+                    <h1><%= movie.MovieName %></h1>
+                    <div class="card_cat">
+                        <p class="PG">PG - <%= movie.MoviePG %></p>
+                        <p class="year">2022</p>
+                        <p class="genre"><%= movie.MovieType %> </p>
+                        <p class="time"><%= movie.MovieDuration %></p>
+                    </div>
+                    <p class="disc"><%= movie.MovieDescription %></p>
+                    <a href="">Read More</a>
+                    <div class="social-btn">
+                        <button>
+                            <a href="/updateMovies/<%= movie.MovieID %>"><i class="fas fa-edit"></i> &nbsp; EDIT MOVIE</a>
+                        </button>
+                        <button>
+                            <a href="/viewMovies/<%= movie.MovieID %>"><i class="fas fa-trash"></i> &nbsp; DELETE MOVIE</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card_right">
+                <div class="img_container">
+                    <img src="/images/<%= movie.MoviePoster %>" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <% }) %>
+
+</body>
+
+</html>
