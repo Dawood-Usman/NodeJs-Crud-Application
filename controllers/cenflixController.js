@@ -3,6 +3,7 @@ const pdf = require("html-pdf");
 const fs = require("fs");
 const options = { format: "A4" };
 
+
 const signIn = (req, res) => {
 
     const UserName = req.body.Name;
@@ -41,7 +42,7 @@ const viewMovies = (req, res) => {
 
         let dataCount = result[0]["COUNT(*)"];
         let pageNo = req.query.page ? req.query.page : 1;
-        let dataPerPages = req.query.data ? req.query.data : 1;
+        let dataPerPages = req.query.data ? req.query.data : 2;
         let startLimit = (pageNo - 1) * dataPerPages;
         let totalPages = Math.ceil(dataCount / dataPerPages);
 
@@ -66,7 +67,7 @@ const generatePDF = (req, res) => {
 
         let dataCount = result[0]["COUNT(*)"];
         let pageNo = req.query.page ? req.query.page : 1;
-        let dataPerPages = req.query.data ? req.query.data : 1;
+        let dataPerPages = req.query.data ? req.query.data : 2;
         let startLimit = (pageNo - 1) * dataPerPages;
         let totalPages = Math.ceil(dataCount / dataPerPages);
 
@@ -95,6 +96,110 @@ const generatePDF = (req, res) => {
                   });
               }
             );
+        })
+    })
+}
+
+const viewMoviesBySorting = (req, res) => {
+
+    const dataCountQuery = "SELECT COUNT(*) FROM Movies";
+    connection.query(dataCountQuery, function (err, result) {
+        if (err) throw err;
+
+        let sorting = req.query.sorting;
+        let dataCount = result[0]["COUNT(*)"];
+        let pageNo = req.query.page ? req.query.page : 1;
+        let dataPerPages = req.query.data ? req.query.data : 2;
+        let startLimit = (pageNo - 1) * dataPerPages;
+        let totalPages = Math.ceil(dataCount / dataPerPages);
+
+        const Query = `SELECT * FROM MOVIES ORDER BY MovieName ${sorting} LIMIT ${startLimit}, ${dataPerPages} `;
+        connection.query(Query, function (err, result) {
+            if (err) throw err;
+            res.render("viewMovies", {
+                moviesData: result,
+                pages: totalPages,
+                CurrentPage: pageNo,
+                lastPage: totalPages
+            });
+        })
+    })
+}
+
+const viewMoviesBySearch = (req, res) => {
+
+    const dataCountQuery = "SELECT COUNT(*) FROM Movies";
+    connection.query(dataCountQuery, function (err, result) {
+        if (err) throw err;
+
+        let searchedMovie = req.body.searchedMovie;
+        let dataCount = result[0]["COUNT(*)"];
+        let pageNo = req.query.page ? req.query.page : 1;
+        let dataPerPages = req.query.data ? req.query.data : 2;
+        let startLimit = (pageNo - 1) * dataPerPages;
+        let totalPages = Math.ceil(dataCount / dataPerPages);
+
+        const Query = `SELECT * FROM MOVIES WHERE MovieName LIKE '%${searchedMovie}%' LIMIT ${startLimit}, ${dataPerPages} `;
+        connection.query(Query, function (err, result) {
+            if (err) throw err;
+            res.render("viewMovies", {
+                moviesData: result,
+                pages: totalPages,
+                CurrentPage: pageNo,
+                lastPage: totalPages
+            });
+        })
+    })
+}
+
+const viewMoviesByPG = (req, res) => {
+
+    const dataCountQuery = "SELECT COUNT(*) FROM Movies";
+    connection.query(dataCountQuery, function (err, result) {
+        if (err) throw err;
+
+        let parentalGuidance = req.query.PG;
+        let dataCount = result[0]["COUNT(*)"];
+        let pageNo = req.query.page ? req.query.page : 1;
+        let dataPerPages = req.query.data ? req.query.data : 2;
+        let startLimit = (pageNo - 1) * dataPerPages;
+        let totalPages = Math.ceil(dataCount / dataPerPages);
+
+        const Query = `SELECT * FROM MOVIES WHERE MoviePG = ${parentalGuidance} LIMIT ${startLimit}, ${dataPerPages}`;
+        connection.query(Query, function (err, result) {
+            if (err) throw err;
+            res.render("viewMovies", {
+                moviesData: result,
+                pages: totalPages,
+                CurrentPage: pageNo,
+                lastPage: totalPages
+            });
+        })
+    })
+}
+
+const viewMoviesByMT = (req, res) => {
+
+    const dataCountQuery = "SELECT COUNT(*) FROM Movies";
+    connection.query(dataCountQuery, function (err, result) {
+        if (err) throw err;
+
+        let movieType = req.query.MT;
+        let dataCount = result[0]["COUNT(*)"];
+        let pageNo = req.query.page ? req.query.page : 1;
+        let dataPerPages = req.query.data ? req.query.data : 2;
+        let startLimit = (pageNo - 1) * dataPerPages;
+        let totalPages = Math.ceil(dataCount / dataPerPages);
+
+        const Query = `SELECT * FROM MOVIES WHERE MovieType = '${movieType}' LIMIT ${startLimit}, ${dataPerPages}`;
+        connection.query(Query, function (err, result) {
+            if (err) throw err;
+            res.render("viewMovies", {
+                moviesData: result,
+                pages: totalPages,
+                CurrentPage: pageNo,
+                lastPage: totalPages
+            });
         })
     })
 }
@@ -149,7 +254,6 @@ const UpdateMovie = (req, res) => {
     })
 }
 
-
 const deleteMovie = (req, res) => {
     const movieID = req.params.id;
     const Query = `DELETE FROM MOVIES WHERE MovieID = ${movieID}`;
@@ -159,11 +263,14 @@ const deleteMovie = (req, res) => {
     })
 }
 
-
 module.exports = {
     signIn,
     signUp,
     viewMovies,
+    viewMoviesBySorting,
+    viewMoviesBySearch,
+    viewMoviesByPG, 
+    viewMoviesByMT,
     generatePDF,
     addMovies,
     showUpdateMovie,

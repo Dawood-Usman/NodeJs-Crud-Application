@@ -1,0 +1,50 @@
+<div class="mainFlex">
+    <div class="topnav">
+        <div class="dropdown">
+            <button class="dropbtn">
+                P-Guidance
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/viewMovies/parentalGuidance/?PG=13&page=<%=+CurrentPage%>">13+</a>
+                <a href="/viewMovies/parentalGuidance/?PG=14&page=<%=+CurrentPage%>">14+</a>
+                <a href="/viewMovies/parentalGuidance/?PG=15&page=<%=+CurrentPage%>">15+</a>
+                <a href="/viewMovies/parentalGuidance/?PG=16&page=<%=+CurrentPage%>">16+</a>
+                <a href="/viewMovies/parentalGuidance/?PG=17&page=<%=+CurrentPage%>">17+</a> 
+                <a href="/viewMovies/parentalGuidance/?PG=18&page=<%=+CurrentPage%>">18+</a> 
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn" id="mybtn">
+                Movie Type
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/viewMovies/movieType/?MT=Action&page=<%=+CurrentPage%>">Action</a>
+                <a href="/viewMovies/movieType/?MT=Comedy&page=<%=+CurrentPage%>">Comedy</a>
+                <a href="/viewMovies/movieType/?MT=Drama&page=<%=+CurrentPage%>">Drama</a>
+                <a href="/viewMovies/movieType/?MT=Fantasy&page=<%=+CurrentPage%>">Fantasy</a>
+                <a href="/viewMovies/movieType/?MT=Horror&page=<%=+CurrentPage%>">Horror</a>
+                <a href="/viewMovies/movieType/?MT=Mystery&page=<%=+CurrentPage%>">Mystery</a>
+                <a href="/viewMovies/movieType/?MT=Romance&page=<%=+CurrentPage%>">Romance</a>
+                <a href="/viewMovies/movieType/?MT=Thriller&page=<%=+CurrentPage%>">Thriller</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">
+                Sorting
+                <i class="fa-solid fa-sort"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/viewMovies/Sorting/?sorting=ASC&page=<%=+CurrentPage%>">Ascending</a>
+                <a href="/viewMovies/Sorting/?sorting=DESC&page=<%=+CurrentPage%>">Descending</a>
+            </div>
+        </div>
+        <div class="search-container">
+          <form action="/viewMovies/searchMovie" method="POST">
+            <input type="text" placeholder="Search..." name="searchedMovie">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+      </div>
+</div>

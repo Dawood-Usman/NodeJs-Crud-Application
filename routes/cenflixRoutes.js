@@ -26,6 +26,11 @@ router.post("/signUp", cenflix.signUp);
 router.get("/viewMovies", cenflix.viewMovies);
 router.get("/viewMovies/printMovie", cenflix.generatePDF);
 
+router.get("/viewMovies/Sorting", cenflix.viewMoviesBySorting);
+router.post("/viewMovies/searchMovie", cenflix.viewMoviesBySearch);
+router.get("/viewMovies/parentalGuidance", cenflix.viewMoviesByPG);
+router.get("/viewMovies/movieType", cenflix.viewMoviesByMT);
+
 router.get("/addMovies", (req, res) => { res.render("addMovies"); });
 router.post("/addMovies", upload.single("moviePoster"), cenflix.addMovies);
 
