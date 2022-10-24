@@ -8,54 +8,55 @@ body {
 
 /* ======================================= */
 
-header{
-    font-family: 'Montserrat', sans-serif;
+header {
+	font-family: 'Montserrat', sans-serif;
 }
 
 nav .container {
-    max-width: 1200px;
-    width: 90%;
-    margin: 0 auto;
+	max-width: 1200px;
+	width: 90%;
+	margin: 0 auto;
 }
 
-nav h1{
-    display: inline-block;
+nav h1 {
+	display: inline-block;
 }
+
 nav ul,
 nav li {
-    display: inline-block;
-    position: relative;
-    bottom: 6px;
+	display: inline-block;
+	position: relative;
+	bottom: 6px;
 }
 
 header h1,
 nav a {
-    color: white;
-    text-decoration: none;
+	color: white;
+	text-decoration: none;
 }
 
 nav ul {
-    float: right;
+	float: right;
 }
 
 
 nav li:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 header {
-    background-color: #263238;
+	background-color: #263238;
 }
 
 nav h1,
 nav li {
-    margin-top: 15px;
-    padding: 10px 10px;
+	margin-top: 15px;
+	padding: 10px 10px;
 }
 
 /* ============================== */
 
-button a{
+button a {
 	text-decoration: none;
 	color: #263238;
 }
@@ -151,3 +152,56 @@ button {
 button:hover {
 	transform: scale(1.1);
 }
+
+.pagination {
+	display: flex;
+	justify-content: center;
+}
+
+.pagination a {
+	color: #263238;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	transition: background-color .3s;
+}
+
+.pagination a.active {
+	background-color: #263238;
+	color: white;
+}
+
+.pagination a:hover:not(.pagination a.active) {
+	background-color: #ddd;
+}
+
+.pagination a {
+	border: 0.5px solid lightGrey;
+}
+
+.left {
+	border-radius: 4px 0 0 4px;
+}
+
+.right {
+	border-radius: 0 4px 4px 0;
+}
+
+.pagination a.disable {
+	color: grey;
+}
+
+.btn{
+	border: 2px solid #263238;
+	color: #263238;
+	padding: 10px;
+	display: inline-block;
+	border-radius: 5px;
+	margin: 25px 15px;
+}
+
+.btn:hover{
+	background-color: #263238;
+	color: #fff;
+}
+

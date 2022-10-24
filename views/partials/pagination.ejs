@@ -1,0 +1,26 @@
+
+<div class="pagination">
+    <% if(CurrentPage==1) {%>
+        <a href="" class="left disable"> Previous </a>
+    <% } else {%>
+        <a href="/viewMovies/?page=<%=CurrentPage-1%>" class="left"> Previous </a>
+    <% } %>
+
+                <% for(let i=1; i<=pages; i++){ %>
+                    <% if(i==CurrentPage){ %>
+                        <a class="active" href="/viewMovies/?page=<%=i%>"> <%=i%> </a>
+                    <% } else {%>
+                        <a href="/viewMovies/?page=<%=i%>"> <%=i%> </a>
+                    <% } %>
+                <% } %>
+
+    <% if(CurrentPage==lastPage) {%>
+         <a href="" class="right disable">Next</a>
+    <% } else {%>
+         <a href="/viewMovies/?page=<%=+CurrentPage+1%>" class="right">Next</a>
+    <% } %>
+
+</div>
+<div style="text-align:center">
+    <a href="/viewMovies/printMovie/?page=<%=+CurrentPage%>" class="btn" target="_blank">Generate PDF</a>
+</div>

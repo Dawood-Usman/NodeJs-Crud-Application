@@ -24,6 +24,7 @@ router.get("/signUp", (req, res) => { res.render("signUp"); });
 router.post("/signUp", cenflix.signUp);
 
 router.get("/viewMovies", cenflix.viewMovies);
+router.get("/viewMovies/printMovie", cenflix.generatePDF);
 
 router.get("/addMovies", (req, res) => { res.render("addMovies"); });
 router.post("/addMovies", upload.single("moviePoster"), cenflix.addMovies);
