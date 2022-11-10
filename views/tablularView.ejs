@@ -17,7 +17,7 @@
             border-spacing: 0;
             width: 50%;
             border: 1px solid #ddd;
-            margin: 3rem auto;
+            margin: 3rem auto 1rem auto;
         }
 
         th,
@@ -54,6 +54,7 @@
                 <ul class="nav-items">
                     <li><a href="/viewMovies">VIEW MOVIES</a></li>
                     <li><a href="/addMovies">ADD MOVIES </a></li>
+                    <li><a href="/viewMovies/tabularView">GENERATE REPORT </a></li>
                     <li><a href="/logout">LOG OUT</a></li>
                 </ul>
             </div>
@@ -88,9 +89,9 @@
             </tr>
             <% }) %>
 
-    </table>
+    </table>    
     <div style="text-align:center">
-        <a href="/viewMovies/printMovie" class="btn" target="_blank">Generate PDF</a>
+        <a href="/viewMovies/printMovie" class="btn" target="_blank">Generate Report</a>
     </div>
 </body>
 
