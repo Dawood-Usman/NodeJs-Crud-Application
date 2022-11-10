@@ -10,7 +10,7 @@
 ![image](https://user-images.githubusercontent.com/110775919/196780178-c51aea9c-64aa-4f26-ba8d-016d0c1a9f3c.png)
 
 ## ViewMovies Page
-![image](https://user-images.githubusercontent.com/110775919/196780312-acb11ae3-2ecd-446c-893c-ad28ed069701.png)
+![image](https://user-images.githubusercontent.com/110775919/197639079-4e3b9da8-a6c6-43e6-b4ff-b741a4d09bab.png)
 
 ## AddMovies Page
 ![image](https://user-images.githubusercontent.com/110775919/196780520-94e38e21-d82d-47bc-bfd4-51bcb1cbd884.png)
