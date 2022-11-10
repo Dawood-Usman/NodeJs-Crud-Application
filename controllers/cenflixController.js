@@ -1,4 +1,6 @@
 const connection = require("../config/config");
+const transporter = require("../nodeMailer/transporter");
+const path = require("path");
 const pdf = require("html-pdf");
 const fs = require("fs");
 const options = { format: "A4" };
@@ -15,8 +17,6 @@ const signIn = (req, res) => {
 
     let TableName = "";
     Role == "admin" ? TableName = "ADMIN" : TableName = "USER";
-
-    console.log(UserName, " ", Password, " ", Role, " ", TableName);
 
     const Query = `SELECT UserName, Password FROM ${TableName} WHERE UserName = '${UserName}' AND Password = '${Password}'`;
     connection.query(Query, function (err, result, fields) {
@@ -111,51 +111,22 @@ const userView = (req, res) => {
 
 const viewMoviesTabular = (req, res) => {
 
-    const dataCountQuery = "SELECT COUNT(*) FROM Movies";
-    connection.query(dataCountQuery, function (err, result) {
+    const Query = `SELECT * FROM MOVIES`;
+    connection.query(Query, function (err, result) {
         if (err) throw err;
-
-        let dataCount = result[0]["COUNT(*)"];
-        let pageNo = req.query.page ? req.query.page : 1;
-        let dataPerPages = req.query.data ? req.query.data : 2;
-        let startLimit = (pageNo - 1) * dataPerPages;
-        let totalPages = Math.ceil(dataCount / dataPerPages);
-
-        const Query = `SELECT * FROM MOVIES LIMIT ${startLimit}, ${dataPerPages}`;
-        connection.query(Query, function (err, result) {
-            if (err) throw err;
-            res.render("tablularView", {
-                moviesData: result,
-                pages: totalPages,
-                CurrentPage: pageNo,
-                lastPage: totalPages
-            });
-        })
-    })
+        res.render("tablularView", { moviesData: result });
+    });
 }
 
 const generatePDF = (req, res) => {
 
-    const dataCountQuery = "SELECT COUNT(*) FROM Movies";
-    connection.query(dataCountQuery, function (err, result) {
-        if (err) throw err;
-
-        let dataCount = result[0]["COUNT(*)"];
-        let pageNo = req.query.page ? req.query.page : 1;
-        let dataPerPages = req.query.data ? req.query.data : 2;
-        let startLimit = (pageNo - 1) * dataPerPages;
-        let totalPages = Math.ceil(dataCount / dataPerPages);
-
-        const Query = `SELECT * FROM MOVIES LIMIT ${startLimit}, ${dataPerPages}`;
+        const Query = `SELECT * FROM MOVIES`;
         connection.query(Query, function (err, result) {
             if (err) throw err;
             res.render(
-                "viewMovies",
+                "movieReport",
                 {
-                    moviesData: result,
-                    pages: totalPages,
-                    CurrentPage: pageNo,
-                    lastPage: totalPages
+                    moviesData: result
                 },
                 function (err, html) {
                     pdf
@@ -166,12 +137,25 @@ const generatePDF = (req, res) => {
                                 var allMoviesPdf = fs.readFileSync("PDF_Uploads/MovieDetail.pdf");
                                 res.header("content-type", "application/pdf");
                                 res.send(allMoviesPdf);
+                                transporter.sendMail({
+                                    from: '"Dawood Usman" <dawoodworld370@gmail>',
+                                    to: "dawoodusman370@gmail.com",
+                                    subject: "Cenflix Report",
+                                    text: "Hello world?",
+                                    html: `<h1>Cenflix Movies Report</h1>
+                                           <p>This is Cenflix Movies Report send through NodeMailer!</p>`,
+                                    attachments: [
+                                      {
+                                        filename: 'MovieDetail.pdf',
+                                        path: path.join(__dirname, "../PDF_Uploads/MovieDetail.pdf")
+                                      }]
+                                  });
+                                
                             }
                         });
                 }
             );
         })
-    })
 }
 
 const viewMoviesBySorting = (req, res) => {

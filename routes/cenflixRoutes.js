@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
 const multer = require("multer");
-const cenflix = require("../controllers/cenflixController");
 const cookieParser = require("cookie-parser");
 const session = require('express-session');
+const cenflix = require("../controllers/cenflixController");
 const {Authentication} = require("../middlewares/auth.js");
 router.use(cookieParser());
 
