@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/viewMovies.css">
+    <link rel="stylesheet" href="/css/filters.css">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 50%;
+            border: 1px solid #ddd;
+            margin: 3rem auto;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 16px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1 class="logo">CENFLIX</h1>
+                <ul class="nav-items">
+                    <li><a href="/viewMovies">VIEW MOVIES</a></li>
+                    <li><a href="/addMovies">ADD MOVIES </a></li>
+                    <li><a href="/logout">LOG OUT</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <%-include("./partials/filters") %>
+
+        <table>
+            <tr>
+                <th>MovieName</th>
+                <th>MoviePG</th>
+                <th>MovieType</th>
+                <th>MovieDuration</th>
+                <th>MovieDescription</th>
+            </tr>
+
+            <% moviesData.forEach(function(movie){ %>
+                <tr>
+                    <td>
+                        <%= movie.MovieName %>
+                    </td>
+                    <td>
+                        <%= movie.MoviePG %>
+                    </td>
+                    <td>
+                        <%= movie.MovieType %>
+                    </td>
+                    <td>
+                        <%= movie.MovieDuration %>
+                    </td>
+                    <td>
+                        <%= movie.MovieDescription %>
+                    </td>
+                </tr>
+                <% }) %>
+
+        </table>
+
+        <%-include("./partials/pagination", { pages: pages, CurrentPage: CurrentPage, lastPage: lastPage }) %>
+</body>
+
+</html>

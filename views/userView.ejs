@@ -17,9 +17,7 @@
             <div class="container">
                 <h1 class="logo">CENFLIX</h1>
                 <ul class="nav-items">
-                    <li><a href="/viewMovies">VIEW MOVIES</a></li>
-                    <li><a href="/addMovies">ADD MOVIES </a></li>
-                    <li><a href="/logout">LOG OUT</a></li>
+                    <li><a href="/logoutUser">LOG OUT</a></li>
                 </ul>
             </div>
         </nav>
@@ -39,14 +37,6 @@
                     </div>
                     <p class="disc"><%= movie.MovieDescription %></p>
                     <a href="">Read More</a>
-                    <div class="social-btn">
-                        <button>
-                            <a href="/updateMovies/<%= movie.MovieID %>"><i class="fas fa-edit"></i> &nbsp; EDIT MOVIE</a>
-                        </button>
-                        <button>
-                            <a href="/viewMovies/<%= movie.MovieID %>"><i class="fas fa-trash"></i> &nbsp; DELETE MOVIE</a>
-                        </button>
-                    </div>
                 </div>
             </div>
             <div class="card_right">
