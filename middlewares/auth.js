@@ -1,3 +1,5 @@
+const transporter = require("../nodeMailer/transporter");
+
 const Authentication = (req, res, next) => {
     if (!req.session.admin) {
         return res.redirect("/signIn");
@@ -14,5 +16,6 @@ const noAuthentication = (req, res, next) => {
     }
     next();
 };
+
 
 module.exports = { Authentication, noAuthentication };

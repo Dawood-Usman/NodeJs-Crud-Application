@@ -45,16 +45,24 @@ const signIn = (req, res) => {
 
 const signUp = (req, res) => {
 
-    const Name = req.body.FName + " " + req.body.LName;
-    const UserName = req.body.Username;
-    const Email = req.body.Email;
-    const Cnic = req.body.cnic;
-    const Password = req.body.Password;
+    const user = req.session.newUser;
+
+    const Name = user.Name;
+    const UserName = user.UserName;
+    const Email = user.Email;
+    const Cnic = user.Cnic;
+    const Password = user.Password;
 
     const Query = `INSERT INTO USER VALUES('${Name}','${UserName}','${Email}','${Cnic}','${Password}')`;
     connection.query(Query, function (err, result) {
-        if (err) throw err;
-        res.redirect("/signIn");
+        if (err){
+            throw err;
+        } 
+        else
+        {
+            req.session.newUser = null;
+            res.redirect("/signIn");
+        }
     })
 
 }
@@ -156,6 +164,32 @@ const generatePDF = (req, res) => {
                 }
             );
         })
+}
+
+const sendMail = (req, res) => {
+
+    const Name = req.body.FName + " " + req.body.LName;
+    const UserName = req.body.Username;
+    const Email = req.body.Email;
+    const Cnic = req.body.cnic;
+    const Password = req.body.Password;
+
+    const user = {Name: Name, UserName:UserName, Email:Email,Cnic:Cnic, Password};
+    req.session.newUser = user;
+
+    const code = "G-1521";
+
+    req.session.code = code;
+
+    let mail = transporter.sendMail({
+        from: '"Dawood Usman" <dawoodworld370@gmail>',
+        to: `${Email}`,
+        subject: "Verification Code",
+        text: "Hello world?",
+        html: `<h1>Cenflix Verification Code!</h1>
+               <p><b>Your Code is : ${code}</b></p>`
+    });
+    res.render("verifyCode", { email: Email });
 }
 
 const viewMoviesBySorting = (req, res) => {
@@ -332,6 +366,7 @@ module.exports = {
     viewMoviesByMT,
     viewMoviesTabular,
     generatePDF,
+    sendMail,
     addMovies,
     showUpdateMovie,
     UpdateMovie,

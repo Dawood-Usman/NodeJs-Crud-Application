@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/signIn.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="/js/signIn.js" defer></script>
+    <title>About Page</title>
+    <style>
+        #para{
+            font-size: small;
+        }
+        #codeVar {
+            margin: 1.5rem 0 0 1rem;
+            color: black !important;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1 class="logo">CENFLIX</h1>
+                <ul class="nav-items">
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="/signIn">LOGIN</a></li>
+                    <li><a href="/signUp">SIGN UP</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="login-form">
+            <h1> Verify Your Account </h1>
+            <p id="para">Please Enter The Verification Code That We Sent To <br><b><%= email %></b> In Order To Activate Your
+                    Account.</p>
+            <form action="/verifyCode" name="Login-Form" method="POST" onsubmit="return validateForm()">
+                <div id="codeVar"><span><b>Verification Code*</b></span></div>
+                <input type="text" name="code" id="Username" placeholder="Enter Your Code Here..."><br>
+                <Span id="UN-error-box"></Span><br>
+                <input type="submit" value="Verify"><br>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
