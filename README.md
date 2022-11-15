@@ -9,6 +9,9 @@
 ## SignUp Page
 ![image](https://user-images.githubusercontent.com/110775919/196780178-c51aea9c-64aa-4f26-ba8d-016d0c1a9f3c.png)
 
+## Email Verification
+![image](https://user-images.githubusercontent.com/110775919/201998788-dde468d5-d12a-404e-be3c-9e3c4aa20c01.png)
+
 ## Admin/ViewMovies Page
 ![image](https://user-images.githubusercontent.com/110775919/201223634-0b2bd8db-9652-4791-967f-0dcc4d926c94.png)
 
